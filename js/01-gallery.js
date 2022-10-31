@@ -14,30 +14,35 @@ const markup = galleryItems
   </a>
 </div>`
   )
-    .join("");
-  
-  
-    
+  .join("");
+
+ const instance = basicLightbox.create(`
+	<h1>Dynamic Content</h1>
+	<p>You can set the content of the lightbox with JS.</p>
+`);
+
+   
 const imagesDiv = document.querySelector(".gallery");
 
-imagesDiv.innerHTML = markup;
-console.log(galleryItems);
-imagesDiv.addEventListener("click", (event) => {
-  event.preventDefault();
-});  
+imagesDiv.insertAdjacentHTML('beforeend', markup);
 
-const instance = basicLightbox.create(`
-    <div class="modal">
-        <p>
-        </p>
-    </div>
-`);
-instance.show();
+imagesDiv.addEventListener("click", onImageClick);
+
+function onImageClick(event) {
+    event.preventDefault()
+    if (event.target.classList.contains(".gallery__image")){
+return instance.show();
+}
+}
+
+
 
 instance.addEventListener("keydown", closingOnEscClick);
+
 function closingOnEscClick(event) {
-    event.preventDefault();
-    if (event.code === "ESCAPE") {
-        instance.close();
-    }
- }
+  event.preventDefault();
+  if (event.code === "ESCAPE") {
+  return  instance.close();
+  }
+    return instance.show();
+}
