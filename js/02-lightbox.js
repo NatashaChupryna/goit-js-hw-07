@@ -9,7 +9,7 @@ const markup = galleryItems
   .join("");
 
 const imagesList = document.querySelector(".gallery");
-imagesList.innerHTML = markup;
+imagesList.insertAdjacentHTML('beforeend', markup);
 
 let lightbox = new SimpleLightbox(".gallery a", {
   /* options */
