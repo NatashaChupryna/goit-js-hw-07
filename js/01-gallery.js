@@ -16,10 +16,6 @@ const markup = galleryItems
   )
   .join("");
 
- const instance = basicLightbox.create(`
-	<h1>Dynamic Content</h1>
-	<p>You can set the content of the lightbox with JS.</p>
-`);
 
    
 const imagesDiv = document.querySelector(".gallery");
@@ -31,18 +27,17 @@ imagesDiv.addEventListener("click", onClick);
 function onClick(evt) {
   evt.preventDefault();
   let urlImg = evt.target.dataset.source;
-  modalImg = basicLightbox.create(
-    `      <img class="modal__image" src="${urlImg}" width="800" height="600">  `
+  modalImg = basicLightbox.create(`<img class="modal__image" src="${urlImg}" width="800" height="600">`
   );
   modalImg.show();
 }
 
-instance.addEventListener("keydown", closingOnEscClick);
+// instance.addEventListener("keydown", closingOnEscClick);
 
-function closingOnEscClick(event) {
-  event.preventDefault();
-  if (event.code === "ESCAPE") {
-  return  instance.close();
-  }
-    return instance.show();
-}
+// function closingOnEscClick(event) {
+//   event.preventDefault();
+//   if (event.code === "ESCAPE") {
+//   return  instance.close();
+//   }
+//     return instance.show();
+// }
