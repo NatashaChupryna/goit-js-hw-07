@@ -26,16 +26,16 @@ const imagesDiv = document.querySelector(".gallery");
 
 imagesDiv.insertAdjacentHTML('beforeend', markup);
 
-imagesDiv.addEventListener("click", onImageClick);
+imagesDiv.addEventListener("click", onClick);
 
-function onImageClick(event) {
-    event.preventDefault()
-    if (event.target.classList.contains(".gallery__image")){
-return instance.show();
+function onClick(evt) {
+  evt.preventDefault();
+  let urlImg = evt.target.dataset.source;
+  modalImg = basicLightbox.create(
+    `      <img class="modal__image" src="${urlImg}" width="800" height="600">  `
+  );
+  modalImg.show();
 }
-}
-
-
 
 instance.addEventListener("keydown", closingOnEscClick);
 
