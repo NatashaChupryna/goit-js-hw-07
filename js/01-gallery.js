@@ -29,15 +29,14 @@ function onClick(evt) {
   let urlImg = evt.target.dataset.source;
   modalImg = basicLightbox.create(`<img class="modal__image" src="${urlImg}" width="800" height="600">`
   );
-  modalImg.show();
+    modalImg.show();
+
+    imagesDiv.addEventListener("keydown", closingOnEscClick);
+
+    function closingOnEscClick(event) {
+      event.preventDefault();
+      if (event.code === "Escape") {
+        return modalImg.close();
+      }
+    }
 }
-
-// instance.addEventListener("keydown", closingOnEscClick);
-
-// function closingOnEscClick(event) {
-//   event.preventDefault();
-//   if (event.code === "ESCAPE") {
-//   return  instance.close();
-//   }
-//     return instance.show();
-// }
