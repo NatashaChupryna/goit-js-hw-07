@@ -25,21 +25,19 @@ imagesDiv.insertAdjacentHTML('beforeend', markup);
 imagesDiv.addEventListener("click", onClick);
 
 function onClick(evt) {
-    evt.preventDefault();
-    if (evt.target.classList.contains("gallery__image")) {
-        return
-    }
+  evt.preventDefault();
   let urlImg = evt.target.dataset.source;
-  modalImg = basicLightbox.create(`<img class="modal__image" src="${urlImg}" width="800" height="600">`
+  let modalImg = basicLightbox.create(
+    `<img class="modal__image" src="${urlImg}" width="800" height="600">`
   );
-    modalImg.show();
+  modalImg.show();
 
-    imagesDiv.addEventListener("keydown", closingOnEscClick);
+  imagesDiv.addEventListener("keydown", closingOnEscClick);
 
-    function closingOnEscClick(event) {
-      event.preventDefault();
-      if (event.code === "Escape") {
-        return modalImg.close();
-      }
+  function closingOnEscClick(event) {
+    event.preventDefault();
+    if (event.code === "Escape") {
+      return modalImg.close();
     }
+  }
 }
