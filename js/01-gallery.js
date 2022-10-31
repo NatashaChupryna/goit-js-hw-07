@@ -25,7 +25,10 @@ imagesDiv.insertAdjacentHTML('beforeend', markup);
 imagesDiv.addEventListener("click", onClick);
 
 function onClick(evt) {
-  evt.preventDefault();
+    evt.preventDefault();
+    if (evt.target.classList.contains("gallery__image")) {
+        return
+    }
   let urlImg = evt.target.dataset.source;
   modalImg = basicLightbox.create(`<img class="modal__image" src="${urlImg}" width="800" height="600">`
   );
